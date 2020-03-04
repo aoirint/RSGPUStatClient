@@ -1,0 +1,10 @@
+version: '3'
+services:
+  app:
+    build: .
+    command: python RSGPUStatClient.py
+    restart: always
+    volumes:
+      - .:/code
+    env_file:
+      - .env
