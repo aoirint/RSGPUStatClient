@@ -66,3 +66,7 @@ if __name__ == '__main__':
     import schedule
 
     schedule.every(15).minutes.do(run)
+
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
