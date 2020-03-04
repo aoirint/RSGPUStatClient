@@ -4,10 +4,13 @@ import csv
 import io
 import json
 
-POST_WEB = int(os.environ.get('POST_WEB', 0)) == 1
+POST_WEB = os.environ.get('POST_WEB') == '1'
 
 WEB_API_ENDPOINT = os.environ.get('WEB_API_ENDPOINT')
 WEB_API_TOKEN_ENDPOINT = os.environ.get('WEB_API_TOKEN_ENDPOINT')
+if WEB_API_TOKEN_ENDPOINT is None or WEB_API_ENDPOINT is None:
+    print('API URL not provided')
+    POST_WEB = False
 
 WEB_AUTH_USER = os.environ.get('WEB_AUTH_USER')
 WEB_AUTH_PASSWORD = os.environ.get('WEB_AUTH_PASSWORD')
